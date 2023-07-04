@@ -5,71 +5,95 @@ using System.Collections.Generic;
 int number;
 do
 {
-    Console.WriteLine("Podaj liczbę graczy: ");
+    Console.WriteLine("Enter the number of players: ");
     number = int.Parse(Console.ReadLine());
 
     if (number <= 0)
     {
-        Console.WriteLine("\nBłędna liczba graczy.");
+        Console.WriteLine("\nWrong number.");
     }
 
     else
     {
-        Console.WriteLine("Wprowadzono poprawną liczbę: " + number);
+        Console.WriteLine("You entered a correct number: " + number);
         break;
     }
 
 } while (true);
 List<Player> list = new List<Player>();
 for (int i = 1; i <= number; i++) {
-    Console.WriteLine("Wprowadź nazwę gracza: ");
+    Console.WriteLine("Enter player's name: ");
     string name = Console.ReadLine();
-    Console.WriteLine("\nWprowadź klasę gracza\n1.Mage\n2.Warrior\n3.Archer: ");
+    Console.WriteLine("\nEnter player's class\n1.Mage\n2.Warrior\n3.Archer: ");
     int choice = int.Parse(Console.ReadLine());
+
+    Character character;
     switch (choice)
     {
-        case 1: Console.WriteLine("You chose Mage!"); break;
-        case 2: Console.WriteLine("You chose Warrior!"); break;
-        case 3: Console.WriteLine("You chose Archer!"); break;
+        case 1: Console.WriteLine("You chose Mage!");
+                character = new Mage();
+                break;
+        case 2: Console.WriteLine("You chose Warrior!");
+                character = new Warrior();
+                break;
+        case 3: Console.WriteLine("You chose Archer!");
+                character = new Archer();
+                break;
 
     }
-    Player player = new Player() { Name = name, PlayerClass = choice, ID = i };
+    Player player = new Player() { Name = name, Character = choice, ID = i };
     list.Add(player);
 }
 
 Console.WriteLine("\nList of players: ");
 foreach(Player player in list)
 {
-    Console.WriteLine(player.Name + " " + player.ID);
+    Console.WriteLine(player.ID + "." + player.Name + player.Character);
 }
 
 
 public class Player
 {
     public string Name { get; set; }
-    public int PlayerClass { get; set; }
+    public int Character { get; set; }
     public int ID { get; set;}
 }
 
-public class Mage
+public class Character
 {
-int attack = 10;
-int ability = 100;
-int health = 700;
+    public int attack;
+    public int ability;
+    public int health;
+
+}
+public class Mage: Character
+{
+    public Mage()
+    {
+        attack = 10;
+        ability = 100;
+        health = 700;
+    }
 }
 
-public class Warrior
+public class Warrior: Character
 {
-    int attack = 30;
-    int ability = 60;
-    int health = 1000;
+    public Warrior()
+    {
+        int attack = 30;
+        int ability = 60;
+        int health = 1000;
+    }
 }
 
-public class Archer
+public class Archer: Character
 {
-    int attack = 20;
-    int ability = 70;
-    int health = 850;
+    public Archer()
+    {
+        int attack = 20;
+        int ability = 70;
+        int health = 850;
+    }
 }
 
 
