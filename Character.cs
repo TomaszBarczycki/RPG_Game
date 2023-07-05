@@ -1,13 +1,20 @@
 ﻿public class Character
 {
-    public int minattack;
-    public int maxattack;
+    public int MinAttack;
+    public int MaxAttack;
     public int ability;
     public int health;
+    Random random = new Random();
 
-    public int attack()
+    public int BasicAttack()
     {
-        Random random = new Random();
-        return random.Next(minattack, maxattack + 1);
+        return random.Next(MinAttack, MaxAttack + 1);
     }
+
+    public int AbilityAttack()
+    {
+        return ability;
+    }
+
 }
+

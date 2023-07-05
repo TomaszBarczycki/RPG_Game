@@ -4,10 +4,10 @@ public class Archer : Character
 {
     public Archer()
     {
-        Random rand = new Random();
-        minattack = 1;
-        maxattack = 25;
+        MinAttack = 1;
+        MaxAttack = 25;
         ability = 70;
-        health = 850;
+        health = 650;
     }
 }
+

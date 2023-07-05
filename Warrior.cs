@@ -2,10 +2,10 @@
 {
     public Warrior()
     {
-        Random rand = new Random();
-        minattack = 1;
-        maxattack = 30;
+        MinAttack = 1;
+        MaxAttack = 30;
         ability = 60;
-        health = 1000;
+        health = 700;
     }
 }
+
